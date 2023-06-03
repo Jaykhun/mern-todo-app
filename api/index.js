@@ -35,8 +35,8 @@ app.put('/todo/:id', async (req, res) => {
     res.json(todo)
 })
 
-app.delete('/todo/:id', (req, res) => {
-    const result = Todo.findByIdAndDelete(req.params.id)
+app.delete('/todo/:id', async (req, res) => {
+    await Todo.findByIdAndDelete(req.params.id)
     res.json({ message: 'ok' })
 })
 

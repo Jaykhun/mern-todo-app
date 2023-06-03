@@ -7,9 +7,6 @@ body {
     color: #fff;
 }
 
-
-.todo {}
-
 input {
     color: #1F1F28;
     outline: none;
@@ -18,8 +15,6 @@ input {
 }
 
 button {
-    background-color: #CDC378;
     color: #1F1F28;
     font-weight: 600;
-    border-radius: 5px;
 }

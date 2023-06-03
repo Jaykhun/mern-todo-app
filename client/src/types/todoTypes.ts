@@ -1,6 +1,8 @@
 export interface ITodo {
-    id: string
+    _id: string
     text: string,
     completed: boolean,
     timestamp: string
 }
+
+export interface ReqTodo extends Omit<ITodo, '_id'>{}
