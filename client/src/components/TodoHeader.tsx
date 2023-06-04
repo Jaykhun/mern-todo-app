@@ -1,13 +1,15 @@
 import { ChangeEvent, useState } from 'react'
+import { useActions } from '../hooks/useActions'
 import { TodoService } from '../service/todoService'
 
 const TodoHeader = () => {
+    const { addTodo } = useActions()
     const [todo, setTodo] = useState('')
 
     const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if (todo.length > 4) {
+        if (todo.trim().length > 4) {
             const newTodo = {
                 text: todo,
                 completed: false,
@@ -16,7 +18,8 @@ const TodoHeader = () => {
 
             try {
                 const res = await TodoService.addTodo(newTodo)
-                console.log(res)
+                addTodo(res.data)
+                setTodo('')
             }
 
             catch (e) {
@@ -24,7 +27,7 @@ const TodoHeader = () => {
             }
         }
 
-        else alert('Too small')
+        else alert('At least 5 symbols')
     }
 
     return (
@@ -35,6 +38,7 @@ const TodoHeader = () => {
                     placeholder='Add Note'
                     className='w-full px-2 rounded-sm'
                     onChange={(e) => setTodo(e.target.value)}
+                    value={todo}
                 />
                 <button className='p-3 rounded-sm bg-yellow-500'>Submit</button>
             </form>

@@ -14,7 +14,7 @@ export const TodoService = {
     },
 
     async addTodo(todo: ReqTodo) {
-        return instance<ITodo[]>({
+        return instance<ITodo>({
             url: '/todo/new',
             method: 'POST',
             data: todo
@@ -22,12 +22,17 @@ export const TodoService = {
     },
 
     async updateTodo(todo: string, id: string) {
-        console.log(todo);
-        
         return instance({
             url: `/todo/${id}`,
             method: 'PUT',
-            data: todo
+            data: { text: todo }
+        })
+    },
+
+    async updateStatus(id: string) {
+        return instance({
+            url: `/todo/completed/${id}`,
+            method: 'PUT'
         })
     },
 
@@ -36,5 +41,5 @@ export const TodoService = {
             url: `/todo/${id}`,
             method: 'DELETE'
         })
-    }
+    },
 }

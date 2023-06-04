@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useActions } from '../hooks/useActions'
+import { useTypedSelector } from '../hooks/useTypedSelector'
 import { TodoService } from '../service/todoService'
-import { ITodo } from '../types/todoTypes'
 import TodoHeader from './TodoHeader'
 import TodoItem from './TodoItem'
 
 const Todo = () => {
-    const [todos, setTodos] = useState<ITodo[]>()
+    const { getAllTodos } = useActions()
+    const { todos } = useTypedSelector(store => store.todos)
 
     const getAll = async () => {
         try {
-            const todos = await TodoService.getAll()
-            setTodos(todos.data)
+            const res = await TodoService.getAll()
+            getAllTodos(res.data)
         }
 
         catch (e) {
@@ -23,11 +25,13 @@ const Todo = () => {
     }, [])
 
     return (
-        <div className='todo'>
-            <TodoHeader />
+        <div className='container max-w-3xl my-10 mx-auto px-4'>
+            <div className='todo'>
+                <TodoHeader />
 
-            <div className="todo__body">
-                {todos && todos.map(todo => <TodoItem todo={todo} key={todo.timestamp} />)}
+                <div className="todo__body">
+                    {todos.map(todo => <TodoItem todo={todo} key={todo._id} />)}
+                </div>
             </div>
         </div>
     )

@@ -28,10 +28,15 @@ app.post('/todo/new', async (req, res) => {
 })
 
 app.put('/todo/:id', async (req, res) => {
-    const todo = await Todo.findById(req.params.id)
-    todo.text = req.body.text
-    todo.save()
+    const { text } = req.body
+    const todo = await Todo.findByIdAndUpdate(req.params.id, { $set: { text } })
+    res.json(todo)
+})
 
+app.put('/todo/completed/:id', async (req, res) => {
+    const todo = await Todo.findById(req.params.id)
+    todo.completed = !todo.completed
+    todo.save()
     res.json(todo)
 })
 
