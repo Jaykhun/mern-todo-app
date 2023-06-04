@@ -23,7 +23,7 @@ Axios is used to make API requests to the backend, and the backend uses Node.js 
 ## Getting Started
 
 ### Install 
-        yarn install
+        npm install
 ### Start api 
         npm start
 ### Start client
