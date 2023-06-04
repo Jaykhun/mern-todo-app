@@ -16,9 +16,9 @@
 
 The todo app is a web-based application built using React, TypeScript, Tailwind, Axios, Redux Toolkit on the frontend, and Node.js, Express.js, and Mongoose on the backend. The app allows users to manage their tasks and keep track of their progress.
 
-The app has several features that allow users to add, edit, and delete notes. Users can create new tasks by filling out a form that includes the task name, description, and due date. They can also edit or delete any of their existing tasks. Additionally, users can mark tasks as completed, which will change their status in the app.
+The app has several features that allow users to add, edit, and delete notes. Users can create new tasks by filling out a form that includes the task name. They can also edit or delete any of their existing tasks. Additionally, users can mark tasks as completed, which will change their status in the app.
 
-The app uses Redux Toolkit to manage its state, which makes it easy to keep track of changes to the app's data. Axios is used to make API requests to the backend, and the backend uses Node.js and Express.js to handle those requests. Mongoose is used to interact with the MongoDB database, which stores all the app's data.
+Axios is used to make API requests to the backend, and the backend uses Node.js and Express.js to handle those requests. Mongoose is used to interact with the MongoDB database.
 
 ## Getting Started
 
